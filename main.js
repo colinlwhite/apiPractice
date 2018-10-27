@@ -1,6 +1,3 @@
-console.log("It's working");
-
-
 const practice = () => {
     return new Promise((resolve, reject) => {
         $.get('https://data.nashville.gov/resource/hrf9-avdm.json') 
@@ -21,13 +18,15 @@ const stringBuilder = (buildings) => {
     let domString = '';
     buildings.forEach((building) => {
         domString += `
-        <div>
-            <h1>${building.contact}</h1>
-        
-        </div>
+        <div class="card d-inline-block m-4" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">${building.contact}</li>
+          <li class="list-group-item">${building.address}</li>
+          <li class="list-group-item">${building.city}</li>
+        </ul>
+      </div>
         `
     })
     $("#api").append(domString);
 };
 
-//stringBuilder();

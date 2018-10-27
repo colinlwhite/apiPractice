@@ -2,3 +2,7 @@ body {
     background-color: wheat;
     color: black;
 }
+
+h1 {
+    text-align: center;
+}

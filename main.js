@@ -1,15 +1,33 @@
 console.log("It's working");
 
 
-const loadBoards = () => {
+const practice = () => {
     return new Promise((resolve, reject) => {
-        $.get('../db/boards.json') // API will eventually go here I think - ajax as well where get is
+        $.get('https://data.nashville.gov/resource/hrf9-avdm.json') 
         .done((data) => {
+            resolve(data); 
             console.log(data);
-            resolve(data.boards); // .then // making the data clean // resolving means the data is good to go
+            stringBuilder(data);
         })
-        .fail((error) => { // only 400 or 500 errors 
-            reject(error); // .catch
+        .fail((error) => { 
+            reject(error); 
         })
     });
 }
+
+practice();
+
+const stringBuilder = (buildings) => {
+    let domString = '';
+    buildings.forEach((building) => {
+        domString += `
+        <div>
+            <h1>${building.contact}</h1>
+        
+        </div>
+        `
+    })
+    $("#api").append(domString);
+};
+
+//stringBuilder();
